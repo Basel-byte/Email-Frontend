@@ -1,0 +1,234 @@
+$appColor : #232F34;
+
+#home {
+  position: relative;
+}
+
+.navbar {
+  background-color: $appColor;
+}
+.navbar-brand{
+  color: #ffffff;
+}
+*.icon-white {color: white}
+.dropdown {
+  display: inline-block;
+}
+
+#searchBar {
+  width: 600px;
+}
+
+#avatar {
+  margin-right: 120px;
+}
+
+#profileMenu {
+  visibility: hidden;
+  position: absolute;
+}
+
+#flex-nowrap {
+
+}
+
+#inboxMenu {
+  margin-top: 5px;
+}
+
+#pageWithoutNavBar {
+  margin-top: 52px;
+}
+
+#sideNavBar {
+  background-color: $appColor;
+  padding-top: 30px;
+  //margin-top: 45px;
+  width: 200px;
+}
+
+.toolbar {
+  //margin-top: 60px;
+}
+
+#composeButton {
+  margin-bottom: 30px;
+  align-self: center;
+  cursor: pointer;
+}
+
+#inboxBtn, #importantBtn, #starredBtn, #sentBtn, #draftsBtn, #trashBtn, #contactsBtn, #addFolderBtn{
+  color: white;
+  background-color: $appColor;
+  border-bottom: 1px solid #e1e6ef;
+  padding-bottom: 1rem;
+}
+
+
+
+#inboxBtn:hover, #importantBtn:hover, #starredBtn:hover, #sentBtn:hover, #draftsBtn:hover, #trashBtn:hover, #contactsBtn:hover,
+#addFolderBtn:hover {
+  color: $appColor;
+  background-color: #90a4ae;
+  transition: 0.5s ease-in-out;
+}
+
+
+.messages {
+  margin-top: 30px;
+  width: 1250px;
+  //border-style: dotted;
+}
+
+.message {
+  position: relative;
+  padding: 1rem 1rem 1rem 2rem;
+  cursor: pointer;
+  border-bottom: 1px solid #e1e6ef;
+}
+
+.message:hover {
+  background: #f9f9fa;
+}
+
+.message .actions {
+  position: absolute;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.actions .action {
+  width: 2rem;
+  margin-bottom: 0.5rem;
+  color: #c0cadd;
+  text-align: center;
+}
+
+.message a {
+  color: #000;
+}
+
+.message a:hover {
+  text-decoration: none;
+}
+
+.message.unread .header,
+.message.unread .title {
+  font-weight: bold;
+}
+
+.message .header {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 0.5rem;
+}
+
+.message .header .date {
+  margin-left: auto;
+}
+
+.message .title {
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.message .description {
+  font-size: 12px;
+}
+
+.toolbar {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e1e6ef;
+}
+
+label input[type="checkbox"] {
+  display: none;
+  padding-top: 12px;
+  cursor: pointer;
+}
+
+.custom-checkbox {
+  position: relative;
+  padding-top: 12px;
+  cursor: pointer;
+}
+
+.far fa-star, .fas fa-star{
+  position: absolute;
+  padding-top: 12px;
+}
+
+#toolbarAndMessages {
+  width: 1293px;
+  margin-left: 25px;
+}
+
+#ex1-tab-1{
+  border-color: $appColor;
+  color: $appColor;
+}
+
+#filterIcon {
+  color: white;
+  padding-right: 10px;
+  cursor: pointer;
+}
+
+#searchIcon {
+  padding-top: 8px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.form-group {
+  margin-left: 2px;
+}
+
+.col-sm-10 {
+  margin-left: 0px;
+  padding-left: 0px;
+}
+
+#filterMenu {
+  display: none;
+  position: absolute;
+  width: 600px;
+}
+
+input {
+  //border: 1px solid white;
+}
+
+.modal-dialog {
+  bottom: 0;
+  right: 0;
+  padding-bottom: 0;
+  padding-right: 0;
+  margin-top: 110px;
+  margin-left: 1000px;
+  position: sticky;
+  display: none;
+}
+
+.modal-footer {
+  align-self: start;
+  border-top: white;
+  padding-top: 3px;
+}
+
+#ToNewMessage, #subjectNewMessage, #bodyNewMessage{
+  width: 483px;
+}
+
+.form-control {
+  border-color: white;
+  border-bottom: 1px solid #e1e6ef;
+}
+
+#bodyNewMessage {
+  height: 300px;
+}
+
