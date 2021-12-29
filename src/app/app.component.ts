@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 
 @Component({
@@ -8,6 +9,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Email';
+
 
 
 }

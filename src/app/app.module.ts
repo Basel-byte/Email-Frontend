@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
+import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MdbAccordionModule } from 'mdb-angular-ui-kit/accordion';
@@ -20,12 +20,18 @@ import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomepageComponent } from './homepage/homepage.component';
+import {LocationStrategy, PathLocationStrategy} from "@angular/common";
+import { SigninpageComponent } from './signinpage/signinpage.component';
+import { SignuppageComponent } from './signuppage/signuppage.component';
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomepageComponent
+    HomepageComponent,
+    SigninpageComponent,
+    SignuppageComponent
   ],
   imports: [
     BrowserModule,
@@ -46,8 +52,9 @@ import { HomepageComponent } from './homepage/homepage.component';
     MdbTooltipModule,
     MdbValidationModule,
     BrowserAnimationsModule,
+    HttpClientModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [{provide: LocationStrategy, useClass: PathLocationStrategy}],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
