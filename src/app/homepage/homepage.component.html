@@ -2,7 +2,7 @@
   <!--  Navigation Bar-->
   <nav id="mainNavbar" class="navbar fixed-top navbar-light navbar-expand-md">
     <div class="container-fluid">
-      <span class="navbar-brand mb-0 h1">Email</span>
+      <span class="navbar-brand mb-0 h1" style="color: white">Email</span>
       <form class="d-flex input-group w-auto">
         <i class="fas fa-search icon-white" id="searchIcon" (click)="implementSearchAlgorithm()"></i>
         <div class="dropdown">
@@ -58,7 +58,7 @@
         <i class="fas fa-user-cog" (click)="toggleProfileMenu()" style="cursor: pointer; color: white"></i>
         <div class="dropdown-menu" id="profileMenu" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" id="dropdownItem1" href="">Profile</a>
-          <a class="dropdown-item" id="dropdownItem2" href="/signIn">Log out</a>
+          <a class="dropdown-item" id="dropdownItem2" href="/signIn" (click)="logOut()">Log out</a>
         </div>
       </div>
     </div>
@@ -79,16 +79,16 @@
               <button class="nav-link" href="" id="sentBtn" (click)="getMessagesFromBackend('Sent'); showMessages()"><i class="fa fa-rocket me-2" style="color: white"></i>Sent</button>
             </li>
             <li class="nav-item">
-              <button class="nav-link" href="" id="draftsBtn" (click)="getMessagesFromBackend('Drafts');showMessages()"><i class="fas fa-file me-2" style="color: white"></i>Drafts</button>
+              <button class="nav-link" href="" id="draftsBtn" (click)="getMessagesFromBackend('Draft');showMessages()"><i class="fas fa-file me-2" style="color: white"></i>Drafts</button>
             </li>
             <li class="nav-item">
               <button class="nav-link" href="" id="importantBtn" (click)="getMessagesFromBackend('Important');showMessages()"><i class="fa fa-bookmark me-2" style="color: white"></i>Important</button>
             </li>
             <li class="nav-item">
-              <button class="nav-link" href="" id="trashBtn" (click)="getMessagesFromBackend('Trash');showMessages()"><i class="fas fa-trash me-2" style="color: white"></i>Trash</button>
+              <button class="nav-link" href="" id="trashBtn" (click)="getMessagesFromBackend('Trashed');showMessages()"><i class="fas fa-trash me-2" style="color: white"></i>Trash</button>
             </li>
             <li class="nav-item">
-              <button class="nav-link" href="" id="contactsBtn"><i class="fas fa-address-book me-2" style="color: white"></i>Contacts </button>
+              <button class="nav-link" id="contactsBtn" (click)="goToContacts()"><i class="fas fa-address-book me-2" style="color: white"></i>Contacts </button>
             </li>
             <li class="nav-item">
               <button class="nav-link" href="" id="addFolderBtn"><i class="fas fa-folder-plus me-2" style="color: white"></i>Folder </button>
@@ -107,13 +107,10 @@
           <button type="button" class="btn btn-light" title="Mark as read">
             <span class="fa fa-envelope"></span>
           </button>
-          <button type="button" class="btn btn-light" title="Mark as important">
+          <button type="button" class="btn btn-light" title="Mark as important" (click)="sendImportant()">
             <span class="fa fa-bookmark"></span>
           </button>
-          <button type="button" class="btn btn-light" title="Mark as draft">
-            <span class="fas fa-file"></span>
-          </button>
-          <button type="button" class="btn btn-light" title="Delete">
+          <button type="button" class="btn btn-light" title="Delete" (click)="sendTrash()">
             <span class="fa fa-trash"></span>
           </button>
         </div>
@@ -143,7 +140,7 @@
       <div class="tab-content" id="ex1-content">
         <div class="tab-pane fade show active" id="ex1-tabs-1" role="tabpanel" aria-labelledby="ex1-tab-1">
           <div class="messages" *ngFor="let message of messages; let i = index">
-            <div class="message unread" [id]="i" (dblclick)="openMessageClicked(i)">
+            <div class="message unread" [id]="i" (dblclick)="markAsRead(i);openMessageClicked(i)">
               <a>
                 <div class="actions">
                   <input class="form-check-input" type="checkbox" title="Select" [checked]="checkBoxActivity(i)" (click)="markAsCheckedAndViceVerca(i)"/>
@@ -201,7 +198,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" style="background-color: #00050d" (click)="setNewMessage()">Send</button>
         <input type="file" class="form-control" id="customFile"/>
-        <button type="button" class="btn btn-primary">Save as draft</button>
+        <button type="button" class="btn btn-primary" (click)="sendDraft()">Save as draft</button>
       </div>
     </div>
   </div>

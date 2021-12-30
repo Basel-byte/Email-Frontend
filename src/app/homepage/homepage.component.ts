@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {UUID} from 'uuid-generator-ts';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {HomepageService} from "./homepage.service";
+import {LoggerService} from "../logger.service";
 
 @Component({
   selector: 'app-homepage',
@@ -12,7 +13,8 @@ export class HomepageComponent implements OnInit {
 
   paramQuery: any
 
-  constructor(private activatedRoute: ActivatedRoute, private homepageService : HomepageService) {
+  constructor(private activatedRoute: ActivatedRoute, private homepageService : HomepageService
+              ,private loggerService: LoggerService, private router : Router) {
       this.activatedRoute.params.subscribe(data => {
         this.paramQuery = data
         console.log(this.paramQuery)
@@ -21,6 +23,7 @@ export class HomepageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getMessagesFromBackend('Inbox')
   }
 
 
@@ -29,17 +32,19 @@ export class HomepageComponent implements OnInit {
   nextDisabled = false
   messageOrder = 0
   inboxSize = 0
-  filterObject: any = {"to": '', "from": '', "subject": '', "body": '', "date": ''}
   searchInput!: string
   starredStates = new Array<boolean>(2000).fill(false)
   checkedStates = new Array<boolean>(2000).fill(false)
   tabsActivity = [true, false]
   newMessage!: any
-  to: Array<string> = []
+  to = new Array<string>(1)
   subject!: string
   body!: string
   allMessages : any;
   messages : any[] = []
+  read!:boolean
+  dynamicUrl!: string
+  filterStr = new Array<string>(5).fill('')
 
   // messages = this.allMessages.slice(0, 4)
 
@@ -115,7 +120,75 @@ export class HomepageComponent implements OnInit {
   toggleStar(starId : string) {
     let index = Number(starId[4]) + 4 * this.pageNo
     this.starredStates[index] = !this.starredStates[index]
+    let starIdArr = new Array<string>(1)
+    console.log(this.allMessages[index])
+    starIdArr[0] = this.allMessages[index].iD
+    this.homepageService.starMessage(starIdArr, this.paramQuery.id).subscribe(data => {
+      console.log("star success")
+    })
     // console.log(this.starredStates[index] + "-----starred"+index)
+  }
+
+  sendImportant() {
+    let importantIdArr = new Array<string>()
+    for (let i = 0; i < this.allMessages.length; i++) {
+      if (this.checkedStates[i]) {
+        importantIdArr.push(this.allMessages[i].iD)
+      }
+    }
+    this.homepageService.importantMessage(importantIdArr, this.paramQuery.id).subscribe( data => {
+      console.log("Important success")
+    })
+  }
+
+  sendDraft() {
+    this.newMessage =
+      {"iD": new UUID().toString(),
+        "from": this.paramQuery.id,
+        "to": this.to,
+        "subject": this.subject,
+        "body": this.body,
+        "date": new Date().toString(),
+        "draft": true,
+        "attachment" : ""
+      }
+    let modal = document.getElementById("newMessageModal")
+    modal!.style.display = 'none'
+    this.homepageService.sendDraft(this.newMessage, this.paramQuery.id).subscribe(data => {
+      console.log("Draft saved")
+      alert("Draft Saved")
+    })
+  }
+
+  sendTrash() {
+    let trashIdArr = new Array<string>()
+    for (let i = 0; i < this.allMessages.length; i++) {
+      if (this.checkedStates[i]) {
+        trashIdArr.push(this.allMessages[i].iD)
+      }
+    }
+    this.homepageService.sendTrash(trashIdArr, this.paramQuery.id).subscribe( data => {
+      console.log("Trash success")
+      alert("Message sent to trash!")
+    })
+
+    this.getMessagesFromBackend("Inbox")
+    this.showMessages()
+  }
+
+  markAsRead(index : any) {
+    let realIndex = index + 4 * this.pageNo
+    let ReadIdArr = new Array<string>()
+    for (let i = 0; i < this.allMessages.length; i++) {
+      if (this.checkedStates[i]) {
+        ReadIdArr.push(this.allMessages[i].iD)
+      }
+    }
+    this.homepageService.sendRead(ReadIdArr, this.paramQuery.id).subscribe( data => {
+      console.log("Read success")
+    })
+    this.getMessagesFromBackend("Inbox")
+    this.showMessages()
   }
 
   openNewMessageModal() {
@@ -137,7 +210,7 @@ export class HomepageComponent implements OnInit {
 
   setTo(e : any) {
     /////make temp string to take input //to// as comma seperated and then parse them in to array of strings
-    this.to.push((e.target as HTMLInputElement).value)
+    this.to[0] = (e.target as HTMLInputElement).value
     console.log("to : " + this.to)
   }
 
@@ -153,7 +226,7 @@ export class HomepageComponent implements OnInit {
 
   setNewMessage() {
     this.newMessage =
-      {"id": new UUID().toString(),
+      {"iD": new UUID().toString(),
       "from": this.paramQuery.id,
       "to": this.to,
       "subject": this.subject,
@@ -182,66 +255,46 @@ export class HomepageComponent implements OnInit {
   }
 
   filterByFrom(e : any) {
-    this.filterObject.from = (e.target as HTMLInputElement).value
+    this.filterStr[0] = (e.target as HTMLInputElement).value
   }
 
   filterByTo(e : any) {
-    this.filterObject.to = (e.target as HTMLInputElement).value
+    this.filterStr[1] = (e.target as HTMLInputElement).value
   }
 
   filterBySubject(e : any) {
     console.log((e.target as HTMLInputElement).value)
-    this.filterObject.subject = (e.target as HTMLInputElement).value
+    this.filterStr[2] = (e.target as HTMLInputElement).value
   }
 
   filterByBody(e : any) {
-    this.filterObject.body = (e.target as HTMLInputElement).value
+    this.filterStr[3] = (e.target as HTMLInputElement).value
   }
 
   filterByDate(e : any) {
-    this.filterObject.date = (e.target as HTMLInputElement).value
+    this.filterStr[4] = (e.target as HTMLInputElement).value
   }
 
   implementSearchAlgorithm() {
-  //   let menu = document.getElementById("filterMenu")
-  //   menu!.style.display = 'none'
-  //   let filterString = []
-  //   let stringCriteria = []
-  //   if (this.filterObject.from.length != 0) {
-  //     filterString.push(this.filterObject.from)
-  //     stringCriteria.push('from')
-  //   }
-  //   if (this.filterObject.to.length != 0) {
-  //     console.log(this.filterObject.to)
-  //     filterString.push(this.filterObject.to)
-  //     stringCriteria.push('to')
-  //   }
-  //   if (this.filterObject.body.length != 0) {
-  //     filterString.push(this.filterObject.body)
-  //     stringCriteria.push('body')
-  //   }
-  //   if (this.filterObject.to.length != 0) {
-  //     filterString.push(this.filterObject.subject)
-  //     stringCriteria.push('subject')
-  //   }
-  //   if (this.filterObject.date != undefined) {
-  //     filterString.push(this.filterObject.date)
-  //     stringCriteria.push('date')
-  //   }
-  //   console.log(filterString.length+ "length")
-  //   if (filterString.length == 1) {
-  //     this.homepageService.monoFilterSearch(filterString, stringCriteria, this.paramQuery.id).subscribe(
-  //       data => {
-  //         this.pageNo = 0
-  //         this.prevDisabled = true
-  //         this.nextDisabled = false
-  //         this.messageOrder = 0
-  //         this.allMessages = data
-  //         this.showMessages()
-  //       }
-  //     )
-  //   }
-  //   console.log(this.filterObject+ "-----search with filter")
+    let menu = document.getElementById("filterMenu")
+    menu!.style.display = 'none'
+    let filterMessage = {
+      "from": this.filterStr[0],
+      "to": [this.filterStr[1]],
+      "subject": this.filterStr[2],
+      "body": this.filterStr[3],
+      "date": this.filterStr[4]
+    }
+    console.log("FILTER: " + filterMessage)
+    this.homepageService.filterSearch(filterMessage, this.paramQuery.id).subscribe(data => {
+      this.pageNo = 0
+      this.prevDisabled = true
+      this.nextDisabled = false
+      this.messageOrder = 0
+      this.allMessages = data
+      this.showMessages()
+      console.log("Filter Success")
+    })
   }
 
   makeAllMessagesCheckedOrViceVerca() {
@@ -271,6 +324,19 @@ export class HomepageComponent implements OnInit {
     let i = index + 4 * this.pageNo
     // console.log("starChecked "+ i + this.starredStates[i])
     return this.starredStates[i]
+  }
+
+  goToContacts() {
+    console.log(this.dynamicUrl)
+    this.dynamicUrl = '/home/contacts/'+ this.paramQuery.id
+    console.log(this.dynamicUrl)
+    this.router.navigateByUrl(this.dynamicUrl)
+  }
+
+  logOut() {
+    this.loggerService.logOut(this.paramQuery.id).subscribe(data => {
+      console.log("Log out Success")
+    })
   }
 }
 

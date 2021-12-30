@@ -1,0 +1,84 @@
+<div id = "contacts" class="container-fluid">
+  <!--  Navigation Bar-->
+  <nav id="contactsNavBar" class="navbar fixed-top navbar-light navbar-expand-md">
+    <div class="container-fluid justify-content-start">
+      <span class="navbar-brand mb-0 h1" id="emailHeader">Email</span>
+      <form class="d-flex input-group w-auto">
+          <input
+            id="searchContactsBar"
+            (keyup)="searchContact($event);"
+            type="search"
+            class="form-control rounded"
+            placeholder="Search contacts"
+            aria-label="Search"
+            aria-describedby="search-addon"
+          />
+        <span id="addIcon" title= "Add contact" (click)="openNewContactModal()"><i class="fas fa-plus me-2" style="color: white"></i></span>
+      </form>
+    </div>
+  </nav>
+  <div class="row flex-column" id="contactsClass" style="position: absolute">
+    <div class="contactsItems" *ngFor="let contact of contacts; let i = index">
+      <div class="item">
+        <a>
+          <div class="singleItem">
+            <span class="trashIcon" title="Delete" (click)="deleteContact(i)"><span class="fa fa-trash"></span></span>
+            <span class="editIcon" title="Edit" (click)="openEditContactModal(i)"><i class="fas fa-edit"></i></span>
+            <span class="name" style="margin-right: 200px">{{contact.name}}</span>
+            <span class="email">{{contact.emailAddress}}</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="modal-dialog" id="newContactModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" style="font-size: 17px">New Contact</h5>
+          <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close" (click)="closeNewContactModal()"></button>
+        </div>
+        <div class="modal-body" style="padding-top: 0px">
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="nameNewContact" placeholder="Name" (keyup)="setNewName($event)">
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-10">
+                <input type="email" class="form-control" id="emailNewContact" placeholder="Email address" (keyup)="setNewEmail($event)">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" style="background-color: #4b585e" (click)="submitNewContact();getContactsFromBackend()">Submit</button>
+        </div>
+      </div>
+    </div>
+    <div class="modal-dialog" id="editContactModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" style="font-size: 17px">Edit Contact</h5>
+          <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close" (click)="closeEditContactModal()"></button>
+        </div>
+        <div class="modal-body" style="padding-top: 0px">
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="nameEditContact" placeholder="Name" (keyup)="setEditName($event)">
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-10">
+                <div class="form-control" id="emailEditContact">Email Address : {{existingContact.emailAddress}}</div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" style="background-color: #4b585e" (click)="saveChanges()">Save changes</button>
+        </div>
+      </div>
+    </div>
+</div>

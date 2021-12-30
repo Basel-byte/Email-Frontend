@@ -22,9 +22,29 @@ export class HomepageService {
     return this.http.post(`http://localhost:8080/emailMessage/noFilterSearch/${emailAddress}`, expression)
   }
 
-  // monoFilterSearch(expression: string[], emailAddress: string) {
-  //   return this.http.post(`http://localhost:8080/emailMessage/monoFilterSearch/${emailAddress}`, expression)
-  // }
+  starMessage(id : string[], emailAddress :string) {
+    return this.http.post(`http://localhost:8080/emailMessage/starMessage/${emailAddress}`, id)
+  }
+
+  importantMessage(id : string[], emailAddress : string) {
+    return this.http.post(`http://localhost:8080/emailMessage/importantMessage/${emailAddress}`, id)
+  }
+
+  sendDraft(message : any, emailAddress : string) {
+    return this.http.post(`http://localhost:8080/emailMessage/draftMessage/${emailAddress}`, message)
+  }
+
+  sendTrash(id : string[], emailAddress : string) {
+    return this.http.post(`http://localhost:8080/emailMessage/deleteMessage/${emailAddress}`, id)
+  }
+
+  sendRead(id : string[], emailAddress : string) {
+    return this.http.post(`http://localhost:8080/emailMessage/readMessage/${emailAddress}`, id)
+  }
+
+  filterSearch(message : any, emailAddress : string) {
+    return this.http.post(`http://localhost:8080/emailMessage/filterSearch/${emailAddress}`, message)
+  }
 
 
 }

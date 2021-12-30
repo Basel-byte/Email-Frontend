@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {LoggerService} from "../logger.service";
+import {stringify} from "@angular/compiler/src/util";
 
 @Component({
   selector: 'app-signinpage',
@@ -45,13 +46,12 @@ export class SigninpageComponent implements OnInit {
     console.log(this.account)
     console.log(this.dynamicUrl + "---final url")
     this.dynamicUrl = '/home/'+ this.dynamicUrl
-    this.router.navigateByUrl(this.dynamicUrl)
+    let status: Object = false
 
     this.logger.logIn(this.account).subscribe(response => {
-      // if (response.toString().slice(0, 7))
-      console.log(response)
+          console.log(response)
     });
-    //////////////////////display response////////////////////
+    this.router.navigateByUrl(this.dynamicUrl)
 
   }
 

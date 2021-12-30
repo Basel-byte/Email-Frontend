@@ -17,4 +17,7 @@ export class LoggerService {
     return this.http.post("http://localhost:8080/emailLogger/logIn", user);
   }
 
+  logOut(emailAddress: string) {
+    return this.http.put("http://localhost:8080/emailLogger/logOut", emailAddress);
+  }
 }

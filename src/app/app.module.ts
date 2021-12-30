@@ -24,6 +24,7 @@ import {LocationStrategy, PathLocationStrategy} from "@angular/common";
 import { SigninpageComponent } from './signinpage/signinpage.component';
 import { SignuppageComponent } from './signuppage/signuppage.component';
 import {HttpClientModule} from "@angular/common/http";
+import { ContactsComponent } from './contacts/contacts.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import {HttpClientModule} from "@angular/common/http";
     AppComponent,
     HomepageComponent,
     SigninpageComponent,
-    SignuppageComponent
+    SignuppageComponent,
+    ContactsComponent
   ],
   imports: [
     BrowserModule,

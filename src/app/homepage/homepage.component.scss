@@ -117,6 +117,12 @@ $appColor : #232F34;
   font-weight: bold;
 }
 
+.message.unread .header,
+.message.unread .title {
+  font-weight: bold;
+}
+
+
 .message .header {
   display: flex;
   flex-direction: row;

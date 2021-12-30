@@ -1,0 +1,72 @@
+#contacts {
+  position: relative;
+}
+
+#contactsNavBar {
+  background-color: #232F34;
+}
+
+#emailHeader {
+    margin-right: 200px;
+    color: white;
+}
+
+#addIcon {
+  margin-top: 5px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+#searchContactsBar {
+  width: 350px;
+}
+
+#contactsClass {
+  padding-top: 70px;
+}
+
+.contactsItems {
+  height: 70px;
+}
+
+.singleItem {
+  font-weight: bold;
+  color: #232F34;
+}
+
+.item {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e1e6ef;
+  cursor: pointer;
+}
+
+.item:hover {
+  background: #f9f9fa;
+}
+
+
+.trashIcon, .editIcon {
+  margin-right: 20px;
+}
+
+.trashIcon:hover, .editIcon:hover{
+  color: #90a4ae;
+}
+
+#nameNewContact, #nameEditContact{
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+#nameNewContact, #emailNewContact, #nameEditContact, #emailEditContact {
+  width: 450px;
+  border-bottom: 1px solid black;
+}
+
+#newContactModal, #editContactModal{
+  position: absolute;
+  padding-top: 120px;
+  margin-left: 650px;
+  display: none;
+}
