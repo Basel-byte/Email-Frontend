@@ -3,7 +3,6 @@
 ![Screenshot (28)](https://user-images.githubusercontent.com/54442462/192001744-6d6bbab6-cfdc-47a6-8e79-02274e06e3d5.png)
 ![Screenshot (29)](https://user-images.githubusercontent.com/54442462/192001749-1f07eeee-4aba-4c6c-9a40-acc2082b4a12.png)
 ![Screenshot (30)](https://user-images.githubusercontent.com/54442462/192001752-cff74462-48e5-4414-9e69-e1441775bd32.png)
-![Screenshot 2021-12-25 061941](https://user-images.githubusercontent.com/54442462/191997518-9919eee4-9d20-4c3d-b4d4-a8b4708be53a.png)
 # Email
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.1.
