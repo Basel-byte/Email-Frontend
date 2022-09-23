@@ -22,6 +22,10 @@
 - Profile Page
   ![{C04A30F2-50E3-49D5-B51F-415E7008358F} png](https://user-images.githubusercontent.com/95590176/192006971-5a37fb93-70a4-4cc3-a7c3-c51c2dc6f02a.jpg)
 
+- Sending new messages
+  - if you want to send a message to someone, click on +New on the top left corner and message-box will pop-up to fill
+  - you can send any type of attachments you want using the attachment icon in the message-box bottom           ![{1005D70C-A1A3-4F65-8A52-1670D338ADB2} png](https://user-images.githubusercontent.com/95590176/192007233-df910847-9ced-4d85-a65b-143ee9fa25d2.jpg)
+  - after writing the message, you can decide to send it or save it in the drafts folder
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.1.
 
