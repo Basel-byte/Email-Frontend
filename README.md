@@ -1,8 +1,8 @@
 # Email
 
 ## Team Members
-  Ali Hassan ElSharawy
-  Basel Ahmed
+  Ali Hassan ElSharawy\
+  Basel Ahmed\
   Louay Magdy
 
 ## Design Decisions
