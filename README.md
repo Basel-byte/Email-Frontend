@@ -6,9 +6,9 @@
     Louay Magdy
 
 ## Design Decisions
-- Sending messages can be from one user to multiple users
-- User can use only one custom folder to drag the needed files inside
-- In searching for messages by "to" attribute if you put multiple users, you will get messages to either of them (inclusively)
+    - Sending messages can be from one user to multiple users
+    - User can use only one custom folder to drag the needed files inside
+    - In searching for messages by "to" attribute if you put multiple users, you will get messages to either of them (inclusively)
 
 ## User Guide
 ![Screenshot (24)](https://user-images.githubusercontent.com/54442462/192001718-3275919b-5954-4468-9420-b8b160033eab.png)
