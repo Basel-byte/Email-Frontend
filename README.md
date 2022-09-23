@@ -13,11 +13,11 @@
 ## User Guide
     - Sign-Up & Sign-In
         Once you have opened the application, you will encounter the following page
-        ![{4EB2F767-D0B7-4C7C-99A2-67524B1D92B1} png](https://user-images.githubusercontent.com/95590176/192006250-873c4aab-c217-4898-b25d-ba1781abd0fd.jpg)
+      ![{4EB2F767-D0B7-4C7C-99A2-67524B1D92B1} png](https://user-images.githubusercontent.com/95590176/192006250-873c4aab-c217-4898-b25d-ba1781abd0fd.jpg)
         
         If you are already a user to our application, fill the required data correctly and click on Sign-In
           If you are a new user to our application, use the sign-up button and you will be redirected to the following page to register and get your account, but you             will       still need to sign-in
-          ![{6A2BCDB0-91D4-430B-BDD1-A75FF59F6B67} png](https://user-images.githubusercontent.com/95590176/192006439-ab1977dc-f3d6-4fae-92c0-378a0061994d.jpg)
+       ![{6A2BCDB0-91D4-430B-BDD1-A75FF59F6B67} png](https://user-images.githubusercontent.com/95590176/192006439-ab1977dc-f3d6-4fae-92c0-378a0061994d.jpg)
 
 
 
