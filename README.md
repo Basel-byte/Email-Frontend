@@ -43,6 +43,7 @@
   - to star a message, check the golden star next to it
   ![{EA8D66C7-5BD5-46B8-BC40-428AD499E689} png](https://user-images.githubusercontent.com/95590176/192008137-5734db3f-736a-433d-8a99-8b258747c99e.jpg)
   - you can also select some messages, by checking the square box on its top left corner then you can move the selected to a certain category
+  
   ![{D65C502B-A2E5-41D8-86AA-F19664C62DE0} png](https://user-images.githubusercontent.com/95590176/192008023-147f1a39-3c6f-4db7-95d1-065c2c6af172.jpg)
   
 - Log out
