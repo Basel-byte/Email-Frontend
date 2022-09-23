@@ -1,9 +1,9 @@
 # Email
 
 ## Team Members:
-    ## Ali Hassan ElSharawy
-    ## Basel Ahmed
-    ## Louay Magdy
+    Ali Hassan ElSharawy
+    Basel Ahmed
+    Louay Magdy
 
 ## Design Decisions
     - Sending messages can be from one user to multiple users
