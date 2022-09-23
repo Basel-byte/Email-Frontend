@@ -24,8 +24,16 @@
 
 - Sending new messages
   - if you want to send a message to someone, click on +New on the top left corner and message-box will pop-up to fill
-  - you can send any type of attachments you want using the attachment icon in the message-box bottom           ![{1005D70C-A1A3-4F65-8A52-1670D338ADB2} png](https://user-images.githubusercontent.com/95590176/192007233-df910847-9ced-4d85-a65b-143ee9fa25d2.jpg)
+  - you can send any type of attachments you want using the attachment icon in the message-box bottom           
   - after writing the message, you can decide to send it or save it in the drafts folder
+  ![{1005D70C-A1A3-4F65-8A52-1670D338ADB2} png](https://user-images.githubusercontent.com/95590176/192007233-df910847-9ced-4d85-a65b-143ee9fa25d2.jpg)
+  
+- Searching
+  - There is two kinds of searching provided:
+     - if you type what you are searching for in the search text box at the top of screen , default search is applied which will bring any message from the the inbox, sent ,or even the trashed messages that somehow matches what you are typing in body, receiver, sender, subject , or even the date of sending the message
+     - if you apply the filter search using the flask icon on the right of the search text box, a message-like form will pop up , and you should enter one or more value to filter messages through
+     ![{9FE371EE-8E48-4CE7-8997-D8885FFBD3C3} png](https://user-images.githubusercontent.com/95590176/192007545-969f537f-4976-495d-a8e9-e22cc25a92a5.jpg)
+  
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.1.
 
