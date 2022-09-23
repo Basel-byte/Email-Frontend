@@ -19,6 +19,8 @@
   If you are a new user to our application, use the sign-up button and you will be redirected to the following page to register and get your account, but you will still need to sign-in
   ![{6A2BCDB0-91D4-430B-BDD1-A75FF59F6B67} png](https://user-images.githubusercontent.com/95590176/192006439-ab1977dc-f3d6-4fae-92c0-378a0061994d.jpg)
 
+- Profile Page
+  ![{C04A30F2-50E3-49D5-B51F-415E7008358F} png](https://user-images.githubusercontent.com/95590176/192006971-5a37fb93-70a4-4cc3-a7c3-c51c2dc6f02a.jpg)
 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.1.
