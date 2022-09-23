@@ -48,6 +48,7 @@
   
 - Log out
   - on the top right corner click on the icon and a menu will appear so that you can choose to log-out
+  
   ![{9245EAE9-E699-4F52-9A25-8AAAD9406E53} png](https://user-images.githubusercontent.com/95590176/192008308-6d86006c-5eaa-4c87-b1df-5a80a40da258.jpg)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.1.
